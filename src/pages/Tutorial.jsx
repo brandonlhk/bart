@@ -36,7 +36,7 @@ export default function Test() {
 
     const playSound = (sound) => {
         const audio = new Audio(sound)
-        audio.volume = 0.2
+        audio.volume = 0.1
         audio.play()
     }
 

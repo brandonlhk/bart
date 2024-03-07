@@ -37,10 +37,10 @@ export default function Test() {
         index: 3,
         count: steps.length,
       })
-      
+
     const playSound = (sound) => {
         const audio = new Audio(sound)
-        audio.volume = 0.2
+        audio.volume = 0.1
         audio.play()
     }
 
