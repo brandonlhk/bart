@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {Button, Stat, StatLabel, StatNumber, StatHelpText, CircularProgress, CircularProgressLabel, 
     Grid, GridItem, Card, Image, Box, Center, Step, StepDescription, StepIcon, StepIndicator, StepNumber, StepSeparator, 
-    StepStatus, StepTitle, Stepper, useSteps, useToast, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody,} from '@chakra-ui/react'
+    StepStatus, StepTitle, Stepper, useSteps, useToast, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody } from '@chakra-ui/react'
 import Balloon from "../images/balloon.png"
 import inflate from "../sounds/balloon_inflate.mp3"
 import cashout from "../sounds/cashout.mp3"
@@ -10,11 +10,7 @@ import pop from "../sounds/pop.mp3"
 
 
 export default function Test() {
-    const balloonPop = [9, 4, 9, 5, 15,
-                        9, 12, 6, 4, 3,
-                        10, 12, 4, 3, 9,
-                        11, 13, 14, 4, 6]
-
+    const balloonPop = [4, 6]
     const toast = useToast()
     const [cashoutDisable, setcashoutDisable] = useState(true)
     const [balloon, setBalloons] = useState(0)
@@ -22,7 +18,7 @@ export default function Test() {
     const [currentCash, setCash] = useState(0)
     const [totalCash, setTotalCash] = useState(0)
     const [totalPump, setTotalPump] = useState(0)
-    const [progress, setProgress] = useState(5)
+    const [progress, setProgress] = useState(50)
     const [balloonSize, setBalloonSize] = useState(300)
     const [showModal, setShowModal] = useState(false)
 
@@ -34,15 +30,16 @@ export default function Test() {
     ]
 
     const {activeStep} = useSteps({
-        index: 3,
+        index: 2,
         count: steps.length,
-      })
-      
+    })
+
     const playSound = (sound) => {
         const audio = new Audio(sound)
         audio.volume = 0.2
         audio.play()
     }
+
 
     const handleInflate = () => {
         playSound(inflate)
@@ -69,6 +66,7 @@ export default function Test() {
                 setBalloonPump(0)
             }
 
+
             // alert user balloon popped
             toast({
                 title: "Balloon popped",
@@ -91,7 +89,7 @@ export default function Test() {
         playSound(cashout)
         setTotalCash(totalCash + currentCash)
         setTotalPump(totalPump + balloonPump)
-        setProgress(previousProgress => previousProgress + 5)
+        setProgress(previousProgress => previousProgress + 50)
 
         // have finished all balloons?
         if (balloon + 1 === balloonPop.length) {
@@ -106,6 +104,7 @@ export default function Test() {
             setBalloonPump(0)
             setBalloons(balloon + 1)
         }
+
     }
 
 
@@ -134,7 +133,7 @@ export default function Test() {
                                                     <CircularProgressLabel>{balloon + 1}</CircularProgressLabel>
                                                 </CircularProgress>
                                             </StatNumber>
-                                            <StatHelpText>Out of 20</StatHelpText>
+                                            <StatHelpText>Out of 2</StatHelpText>
                                         </Stat>
                                     </GridItem>
 
@@ -204,13 +203,13 @@ export default function Test() {
             <Modal isOpen={showModal} closeOnOverlayClick={false} closeOnEsc={false} >
                 <ModalOverlay />
                 <ModalContent style={{ position: "fixed", top: "35%", left: "40%", transform: "translate(-50%, -50%)" }}>
-                <ModalHeader>Experiment completed</ModalHeader>
+                <ModalHeader>Tutorial completed</ModalHeader>
                 <ModalBody>
-                    You have finished the experiment, click the button to move to the summary! Please remember to screenshot the summary page and attach it to the Google Form!
+                    You have finished the tutorial, click the button to move to the experiment!
                 </ModalBody>
                 <ModalFooter>
-                    <Button as={Link} to="/summary" colorScheme="blue" >
-                    Go to summary
+                    <Button as={Link} to="/experiment" colorScheme="blue" >
+                    Start experiment
                     </Button>
                     
                 </ModalFooter>
