@@ -21,7 +21,7 @@ export default function Test() {
     const [progress, setProgress] = useState(50)
     const [balloonSize, setBalloonSize] = useState(300)
     const [showModal, setShowModal] = useState(false)
-
+    
     const steps = [
         { title: 'First', description: 'Explaination' },
         { title: 'Second', description: 'Tutorial' },

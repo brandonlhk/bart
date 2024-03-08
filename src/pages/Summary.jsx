@@ -1,9 +1,9 @@
 import {Link} from "react-router-dom"
-import {Box, Button, Heading, Text, Center, Card, CardHeader, CardBody, CardFooter, OrderedList, ListItem,
-    Step, StepDescription, StepIcon, StepIndicator, StepNumber, StepSeparator, 
-    StepStatus, StepTitle, Stepper, useSteps} from '@chakra-ui/react'
+import {Box, Button, Heading, Text, Center, Card, CardHeader, CardBody, CardFooter, Stat, StatLabel, StatNumber,
+        Grid, GridItem, Step, StepDescription, StepIcon, StepIndicator, StepNumber, StepSeparator, 
+        StepStatus, StepTitle, Stepper, useSteps} from '@chakra-ui/react'
 
-export default function Home() {
+export default function Summary() {
     const steps = [
         { title: 'First', description: 'Explaination' },
         { title: 'Second', description: 'Tutorial' },
@@ -12,38 +12,49 @@ export default function Home() {
     ]
 
     const {activeStep} = useSteps({
-        index: 1,
+        index: 4,
         count: steps.length,
     })
+    const userResultTotalCash = JSON.parse(localStorage.getItem("experimentData")).totalCash
+    const userResultTotalPump = JSON.parse(localStorage.getItem("experimentData")).totalPump
 
     return (
         <div style={{backgroundColor: "#3183cf"}}>
             <Center h="100vh">
                 <Card variant="elevated" maxW="750px" minW="750px">
                     <CardHeader>
-                        <Heading as="h3" size="xl">
-                            Experiment for COR-STAT 1202 G3T03 Project
+                        <Heading as="h3" size="lg">
+                            Summary of the experiment
                         </Heading>
                     </CardHeader>
 
                     <CardBody>
-                        <Text>Thank you for agreeing to participate in our experiment, rest assured that the result of the experiment does not indicate anything negative! </Text>
+                        <Text>Thank you for participating in our experiment! Please screenshot this page and attach it to the Google Form as an image! </Text>
 
-                        <Text mt="5" ><strong>Instructions for the experiment</strong></Text>
-                        <OrderedList>
-                            <ListItem>You will see a balloon on the screen, your goal is to earn as much money as you can!</ListItem>
-                            <ListItem>You will earn money each time you inflate the balloon.</ListItem>
-                            <ListItem>However, the balloon might pop at any time and if it does, you will lose <strong>ALL</strong> the money you've earned for that balloon</ListItem>
-                            <ListItem>You can cash out at any time and bank the money you've earned so far</ListItem>
-                            <ListItem>There will be sounds being played in this experiment, please lower/increase the volume if needed!</ListItem>
-                            <ListItem>You will now start a short tutorial for this experiment, click the button below!</ListItem>
-                        </OrderedList>
+                        <Heading as="h5"></Heading>
+                        <Text mt="5" as="h1"><strong>Experiment results</strong></Text>
+                        <Grid templateColumns="1fr 1fr 1fr" gap={0} mt="3">
+                            
+                            {/* Total Cash */}
+                            <GridItem>
+                                <Stat>
+                                    <StatLabel fontSize="xl">Total Cash Collected</StatLabel>
+                                    <StatNumber>${userResultTotalCash} 💰</StatNumber>
+                                </Stat>
+                            </GridItem>
+
+                            {/* Total Pumps */}
+                            <GridItem>
+                                <Stat>
+                                    <StatLabel fontSize="xl">Total Pumps</StatLabel>
+                                    <StatNumber>{userResultTotalPump} 💨</StatNumber>
+                                </Stat>
+                            </GridItem>
+
+                        </Grid>
                         
                     </CardBody>
 
-                    <CardFooter>
-                        <Button as={Link} to="tutorial" colorScheme='blue'>Start Tutorial</Button>
-                    </CardFooter>
                 </Card>
             </Center>
             

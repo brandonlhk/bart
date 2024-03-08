@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {Button, Stat, StatLabel, StatNumber, StatHelpText, CircularProgress, CircularProgressLabel, 
     Grid, GridItem, Card, Image, Box, Center, Step, StepDescription, StepIcon, StepIndicator, StepNumber, StepSeparator, 
@@ -32,6 +32,11 @@ export default function Test() {
         { title: 'Third', description: 'Experiment' },
         { title: 'Fourth', description: 'Summary' },
     ]
+
+    useEffect(() => {
+        // Update localStorage when totalCash or totalPump changes
+        localStorage.setItem('experimentData', JSON.stringify({ totalCash, totalPump }));
+    }, [totalCash, totalPump]);
 
     const {activeStep} = useSteps({
         index: 3,
