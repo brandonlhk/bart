@@ -1,5 +1,4 @@
-import {Link} from "react-router-dom"
-import {Box, Button, Heading, Text, Center, Card, CardHeader, CardBody, CardFooter, Stat, StatLabel, StatNumber,
+import {Box, Heading, Text, Center, Card, CardHeader, CardBody, Stat, StatLabel, StatNumber,
         Grid, GridItem, Step, StepDescription, StepIcon, StepIndicator, StepNumber, StepSeparator, 
         StepStatus, StepTitle, Stepper, useSteps} from '@chakra-ui/react'
 
@@ -15,8 +14,8 @@ export default function Summary() {
         index: 4,
         count: steps.length,
     })
-    const userResultTotalCash = JSON.parse(localStorage.getItem("experimentData")).totalCash
-    const userResultTotalPump = JSON.parse(localStorage.getItem("experimentData")).totalPump
+    // const userResultTotalCash = JSON.parse(localStorage.getItem("experimentData")).totalCash
+    // const userResultTotalPump = JSON.parse(localStorage.getItem("experimentData")).totalPump
 
     return (
         <div style={{backgroundColor: "#3183cf"}}>
@@ -39,7 +38,7 @@ export default function Summary() {
                             <GridItem>
                                 <Stat>
                                     <StatLabel fontSize="xl">Total Cash Collected</StatLabel>
-                                    <StatNumber>${userResultTotalCash} 💰</StatNumber>
+                                    <StatNumber>$100 💰</StatNumber>
                                 </Stat>
                             </GridItem>
 
@@ -47,7 +46,7 @@ export default function Summary() {
                             <GridItem>
                                 <Stat>
                                     <StatLabel fontSize="xl">Total Pumps</StatLabel>
-                                    <StatNumber>{userResultTotalPump} 💨</StatNumber>
+                                    <StatNumber>100 💨</StatNumber>
                                 </Stat>
                             </GridItem>
 
