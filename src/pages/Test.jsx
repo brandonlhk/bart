@@ -10,10 +10,7 @@ import pop from "../sounds/pop.mp3"
 
 
 export default function Test() {
-    const balloonPop = [9, 4, 9, 5, 15,
-                        9, 12, 6, 4, 3,
-                        10, 12, 4, 3, 9,
-                        11, 13, 14, 4, 6]
+    const balloonPop = [13, 7, 13, 5, 5, 7, 9, 18, 10, 18, 13, 14, 18, 10, 7, 14, 7, 5, 15, 14] //randomly generated from Python's random module
 
     const toast = useToast()
     const [cashoutDisable, setcashoutDisable] = useState(true)
