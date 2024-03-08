@@ -14,8 +14,8 @@ export default function Summary() {
         index: 4,
         count: steps.length,
     })
-    // const userResultTotalCash = JSON.parse(localStorage.getItem("experimentData")).totalCash
-    // const userResultTotalPump = JSON.parse(localStorage.getItem("experimentData")).totalPump
+    const userResultTotalCash = JSON.parse(localStorage.getItem("experimentData")).totalCash
+    const userResultTotalPump = JSON.parse(localStorage.getItem("experimentData")).totalPump
 
     return (
         <div style={{backgroundColor: "#3183cf"}}>
@@ -38,7 +38,7 @@ export default function Summary() {
                             <GridItem>
                                 <Stat>
                                     <StatLabel fontSize="xl">Total Cash Collected</StatLabel>
-                                    <StatNumber>$100 💰</StatNumber>
+                                    <StatNumber>${userResultTotalCash} 💰</StatNumber>
                                 </Stat>
                             </GridItem>
 
@@ -46,7 +46,7 @@ export default function Summary() {
                             <GridItem>
                                 <Stat>
                                     <StatLabel fontSize="xl">Total Pumps</StatLabel>
-                                    <StatNumber>100 💨</StatNumber>
+                                    <StatNumber>{userResultTotalPump} 💨</StatNumber>
                                 </Stat>
                             </GridItem>
 
