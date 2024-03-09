@@ -10,7 +10,7 @@ import pop from "../sounds/pop.mp3"
 
 
 export default function Test() {
-    const balloonPop = [13, 7, 13, 5, 5, 7, 9, 18, 10, 18, 13, 14, 18, 10, 7, 14, 7, 5, 15, 14] //randomly generated from Python's random module
+    const balloonPop = [7, 20, 10, 11, 14, 20, 9, 11, 14, 7, 16, 17, 6, 18, 5, 9, 20, 17, 9, 17, 12, 7, 7, 13, 9, 12, 12, 10, 20, 11] //randomly generated from Python's random module
 
     const toast = useToast()
     const [cashoutDisable, setcashoutDisable] = useState(true)
@@ -54,7 +54,7 @@ export default function Test() {
         // balloon popped
         if (balloonPump === balloonPop[balloon] - 1) {
             playSound(pop)
-            setProgress(previousProgress => previousProgress + 5)
+            setProgress(previousProgress => previousProgress + 3.33)
             setTotalPump(totalPump + balloonPump + 1)
             setBalloonSize(300)
             setcashoutDisable(true)
@@ -93,7 +93,7 @@ export default function Test() {
         playSound(cashout)
         setTotalCash(totalCash + currentCash)
         setTotalPump(totalPump + balloonPump)
-        setProgress(previousProgress => previousProgress + 5)
+        setProgress(previousProgress => previousProgress + 3.33)
 
         // have finished all balloons?
         if (balloon + 1 === balloonPop.length) {
@@ -133,10 +133,10 @@ export default function Test() {
                                             <StatLabel>Balloons</StatLabel>
                                             <StatNumber>
                                                 <CircularProgress value={progress}>
-                                                    <CircularProgressLabel>{balloon + 1}</CircularProgressLabel>
+                                                    <CircularProgressLabel>{balloon}</CircularProgressLabel>
                                                 </CircularProgress>
                                             </StatNumber>
-                                            <StatHelpText>Out of 20</StatHelpText>
+                                            <StatHelpText>Out of 30</StatHelpText>
                                         </Stat>
                                     </GridItem>
 
